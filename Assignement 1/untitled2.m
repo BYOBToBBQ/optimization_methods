@@ -7,7 +7,7 @@ x=[3;3];
 n=0;
 while abs(x(1))>1e-3 &&  abs(x(2))>1e-3
     n=n+1;
-    x=iterate(x)
+    x=iterate(x);
 end
 
 function res=iterate(x)
@@ -20,7 +20,7 @@ end
 
 function res=hessian(x)
 x1=x(1);
-res=[12*(x1-2)^2+2, -4; -4 ,8]
+res=[12*(x1-2)^2+2, -4; -4 ,8];
 end
 
 function res=gradient(x)
