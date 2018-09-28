@@ -16,7 +16,7 @@ while abs(f(S,K,T,sigma,r)-10.78)>eps
     sigma=iterateStep(S,K,T,sigma,r);
 end
 fprintf('Exercise 1 result:\n')
-fprintf('The implied volatility is %.2f \n',sigma)
+fprintf('The implied volatility is %.4f \n',sigma)
 fprintf('---------------\n')
 
 %Exercise 2
@@ -33,24 +33,39 @@ x_0=[2;2];
 [x,n]=newton(x_0,1e-6);
 fprintf('The minimum of the function (x1-2)^4+(x1-2*x2)^2 is (%.2f;%.2f) \n',x(1),x(2))
 fprintf('%d iterations were needed for Newtons method to converge with starting point (%.2f;%.2f)\n',n,x_0(1),x_0(1))
-%'We see that in the second scenario since the first guess point is closer to the actual minimum, 
+%'We see that in the second scenario since the first guess point is closer to the actual minimum 
 % we need one less iteration and the result is more accurate
 fprintf('---------------\n')
 
 fprintf('Exercise 2 part b) result:\n')
-x_0=[2;2];
+x_0=[3;3];
 stepsize=10;
 [x,n]=gradientDescent(x_0,stepsize,1e-6);
 fprintf('The minimum of the function (x1-2)^4+(x1-2*x2)^2 is (%.2f;%.2f) \n',x(1),x(2))
-fprintf('%d iterations were needed for Newtons method to converge with starting point (%.2f;%.2f) and %.2f stepsize \n',n,x_0(1),x_0(1),stepsize)
+fprintf('%d iterations were needed for gradient descent to converge with starting point (%.2f;%.2f) and %.2f stepsize \n',n,x_0(1),x_0(1),stepsize)
 stepsize=0.5;
 [x,n]=gradientDescent(x_0,stepsize,1e-6);
 fprintf('The minimum of the function (x1-2)^4+(x1-2*x2)^2 is (%.2f;%.2f) \n',x(1),x(2))
 fprintf('%d iterations were needed for gradient descent to converge with starting point (%.2f;%.2f) and %.2f stepsize\n',n,x_0(1),x_0(1),stepsize)
-stepsize=0.01;
+stepsize=0.1;
 [x,n]=gradientDescent(x_0,stepsize,1e-6);
 fprintf('The minimum of the function (x1-2)^4+(x1-2*x2)^2 is (%.2f;%.2f) \n',x(1),x(2))
-fprintf('%d iterations were needed for gradient descent to converge with starting point (%.2f;%.2f) and %.2 fstepsize\n',n,x_0(1),x_0(1),stepsize)
+fprintf('%d iterations were needed for gradient descent to converge with starting point (%.2f;%.2f) and %.2f stepsize\n',n,x_0(1),x_0(1),stepsize)
+x_0=[2;2];
+[x,n]=gradientDescent(x_0,stepsize,1e-6);
+fprintf('The minimum of the function (x1-2)^4+(x1-2*x2)^2 is (%.2f;%.2f) \n',x(1),x(2))
+fprintf('%d iterations were needed for gradient descent to converge with starting point (%.2f;%.2f) and %.2f stepsize\n',n,x_0(1),x_0(1),stepsize)
+
+%First we can see that if the stepsize is too big gradient descent will
+%diverge very quickly since we overshoot too far along the line of steepest descent.
+%Next we see that the number of steps needed to converge when using a reasonable stepsize is magnitudes
+%higher than the number of step necessary for Newton's method to converge.
+%However each step of Newton's method requires the evaluation of the
+%inverse Hessian, which is quite costly both in terms of computational
+%ressources and memory and thus each step of Newton takes more time than
+%each step of gradient descent. Also gradient descent requires knowledge of
+%the gradient only, while Newton's method requires knowledge of the Hessian
+%in addition.
 
 %Option price function
 function res=f(S,K,T,sig,r)
