@@ -45,25 +45,15 @@ fprintf('The minimum of the function (x1-2)^4+(x1-2*x2)^2 is (%.2f;%.2f) \n',x(1
 fprintf('%d iterations were needed for gradient descent to converge with starting point (%.2f;%.2f) and %.2f stepsize \n',n,x_0(1),x_0(1),stepsize)
 fprintf('\n')
 
-stepsize=10;
-[x,n]=gradientDescent(x_0,stepsize,1e-6);
-fprintf('The minimum of the function (x1-2)^4+(x1-2*x2)^2 is (%.2f;%.2f) \n',x(1),x(2))
-fprintf('%d iterations were computed, the gradient descent diverges with starting point (%.2f;%.2f) and %.2f stepsize \n',n,x_0(1),x_0(1),stepsize)
-stepsize=0.5;
-fprintf('\n')
 
+stepsize=0.5;
 [x,n]=gradientDescent(x_0,stepsize,1e-6);
-fprintf('The minimum of the function (x1-2)^4+(x1-2*x2)^2 is (%.2f;%.2f) \n',x(1),x(2))
 fprintf('%d iterations were computed, the gradient descent diverges with starting point (%.2f;%.2f) and %.2f stepsize\n',n,x_0(1),x_0(1),stepsize)
 stepsize=0.1;
-fprintf('\n')
-
 [x,n]=gradientDescent(x_0,stepsize,1e-6);
 fprintf('The minimum of the function (x1-2)^4+(x1-2*x2)^2 is (%.2f;%.2f) \n',x(1),x(2))
 fprintf('%d iterations were needed for gradient descent to converge with starting point (%.2f;%.2f) and %.2f stepsize\n',n,x_0(1),x_0(1),stepsize)
 x_0=[2;2];
-fprintf('\n')
-
 [x,n]=gradientDescent(x_0,stepsize,1e-6);
 fprintf('The minimum of the function (x1-2)^4+(x1-2*x2)^2 is (%.2f;%.2f) \n',x(1),x(2))
 fprintf('%d iterations were needed for gradient descent to converge with starting point (%.2f;%.2f) and %.2f stepsize\n',n,x_0(1),x_0(1),stepsize)
