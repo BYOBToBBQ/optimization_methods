@@ -3,8 +3,10 @@ eps= 0.000001;
 mu=10;
 increment=1.01;
 
+%the number of iterations is counted as the number of time we run newton's
+%algorithm on a previously found minimum until convergence
 [result,n_iter] =newton_penalty(mu,x_0,eps,increment);
-fprintf('Increment size: %.2f',increment)
+fprintf('Increment size: %.2f\n',increment)
 fprintf('Result is [%.4f,%.4f] for %d iterations\n',result(1),result(2),n_iter);
 fprintf('Min point is [%.4f,%.4f]\n',result(1),result(2));
 fprintf('Function evaluation at min is [%.4f]\n',fct(result));
@@ -22,7 +24,7 @@ fprintf('Equality constraint [%.4f]\n',(abs(result(2)-result(1)^2)));
 %same starting mu, which is intuitive
 
 increment=10000000000;
-fprintf('We a very large increment: %d\n',increment);
+fprintf('We try a very large increment: %d\n',increment);
 fprintf('Disclaimer, the algorithm will not converge, so feel free to stop');
 [result,n_iter] =newton_penalty(mu,x_0,eps,increment);
 fprintf('Result is [%.4f,%.4f] for %d iterations\n',result(1),result(2),n_iter);
