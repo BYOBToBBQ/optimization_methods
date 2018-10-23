@@ -2,8 +2,8 @@ clear all;
 close all;
 %Define parameters
 beta=0.95;
-A=0.5;
-B=7.5;
+A=6.5;
+B=2.5;
 %+1 to get actual number of points on grid
 NumPoints =199;
 %Discretize the state space around the optimal solution
@@ -31,7 +31,7 @@ while max_stop > 0.00001
         V_next(i)= max(M(i,:));
     end
     
-    max_stop = max(abs(V_next(i)-V_0(i)));
+    max_stop = max(abs(V_next-V_0));
     V_0=V_next;
 end
 
