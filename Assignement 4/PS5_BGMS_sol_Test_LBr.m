@@ -5,7 +5,7 @@ close all;
 beta=0.9;
 A=2;
 B=1.5;
-NumPoints =1000;
+NumPoints =10;
 %Discretize the state space around the optimal solution
 x_bar = 0;
 x_lo = x_bar-1;
