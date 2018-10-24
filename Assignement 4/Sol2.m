@@ -1,11 +1,11 @@
 clear all;
 close all;
 %Define parameters
-beta=0.95;
-A=6.5;
-B=2.5;
+beta=0.99;
+A=4;
+B=4;
 %+1 to get actual number of points on grid
-NumPoints =199;
+NumPoints =999;
 %Discretize the state space around the optimal solution
 x_bar = 0;
 x_lo = x_bar-1;
@@ -23,7 +23,7 @@ while max_stop > 0.00001
     V_next = zeros(1,n);
     for i=1:n
         for j=1:n
-            M(i,j)=-A*(X(i)-X(j)^2-B*X(i)^2)+beta*V_0(j);
+            M(i,j)=-A*(X(i)-X(j))^2-B*X(i)^2+beta*V_0(j);
         end
     end
     
@@ -36,3 +36,14 @@ while max_stop > 0.00001
 end
 
 plot(X,V_0);
+hold on
+%theoretical analytically derived
+a1= ((1/beta + 1 + B/A)-sqrt((1/beta + 1 + B/A)^2-4/beta))/2;
+
+V_th = -(A*(1-a1))/(beta*a1)*X.^2;
+
+plot(X,V_th)
+hold off
+%We see that both functions coincide perfectly, so much so that they are
+%undistinguishable.
+
