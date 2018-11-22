@@ -2,8 +2,8 @@ clear all;
 close all;
 %Define parameters
 beta=0.99;
-A=8;
-B=4;
+A=2;
+B=2;
 %+1 to get actual number of points on grid
 NumPoints =999;
 %Discretize the state space around the optimal solution
